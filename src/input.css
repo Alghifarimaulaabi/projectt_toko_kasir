@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-poppins: "Poppins", sans-serif;
+}
+
+.btn {
+  @apply px-4 py-2 rounded font-semibold transition duration-200;
+}
+
+.btn-primary {
+  @apply bg-[#2FA084] text-white hover:bg-[#1F6F5F] px-10 w-auto;
+}
+
+.btn-secondary {
+  @apply bg-gray-500 text-white hover:bg-gray-600;
+}
+
+.btn-danger {
+  @apply bg-red-500 text-white hover:bg-red-600;
+}
+
+/* Outline */
+.btn-outline {
+  @apply border-[#2FA084] border-1 text-shadow-black hover:bg-[#2FA084] hover:text-white;
+}
+
+/* Gradient */
+.btn-gradient {
+  @apply bg-gradient-to-r from-blue-500 to-indigo-500 text-white hover:opacity-90;
+}
+
+/* Shadow */
+.btn-shadow {
+  @apply bg-blue-500 text-white shadow-md hover:shadow-lg hover:bg-blue-600;
+}
+
+/* Full width */
+.btn-block {
+  @apply w-full;
+}
+
+/* Disabled */
+.btn-disabled {
+  @apply bg-gray-300 text-gray-500 cursor-not-allowed;
+}
+
+.bg-go {
+  @apply bg-[#1F6F5F];
+}
+
+.bg-gy {
+  @apply bg-[#2FA084];
+}
+
+.bg-gl {
+  @apply bg-[#6FCF97]
+}
+
+/* template li */
+@layer components {
+  .li-sb {
+    @apply bg-gradient-to-r from-[#6FCF97] to-[#2FA084] text-white px-4 py-3 rounded-xl transition-all duration-300 cursor-pointer;
+  }
+  
+  .li-sb:hover {
+    @apply from-[#2FA084] to-[#1F6F5F] transform scale-105 shadow-lg;
+  }
+
+  .sidebar-link {
+    @apply transition-all duration-300 font-poppins font-medium;
+  }
+
+  .li-sb.active {
+    @apply bg-gradient-to-r from-[#2FA084] to-[#1F6F5F] transform scale-105 shadow-lg;
+    position: relative;
+}
+
+.li-sb.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 70%;
+    background-color: white;
+    border-radius: 0 4px 4px 0;
+}
+
+}
+
+/* Animasi fade up */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Class reusable */
+.fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+html {
+  scroll-behavior: smooth;
+}
