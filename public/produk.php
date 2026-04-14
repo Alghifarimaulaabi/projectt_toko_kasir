@@ -19,7 +19,7 @@ if (!isset($_SESSION['email'])) {
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-3xl font-bold text-gray-800">Manajemen Produk</h1>
             <button type="button" onclick="resetForm()" 
-                class="bg-gl hover:bg-go text-white px-4 py-2 rounded-lg flex items-center gap-2 transition duration-200"
+                class="bg-[#1F6F5F] hover:bg-[#6FCF97] cursor-pointer text-white px-4 py-2 rounded-lg flex items-center gap-2 transition duration-200"
                 id="btnTambahProduk">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
@@ -40,7 +40,7 @@ if (!isset($_SESSION['email'])) {
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Barang</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harga Modal</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harga Jual</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">QTY</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                         </tr>
                     </thead>
@@ -71,7 +71,7 @@ if (!isset($_SESSION['email'])) {
             
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Kategori <span class="text-red-500">*</span></label>
-                <select name="kategori" id="kategori" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                <select name="kategori" id="kategori" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
                     <option value="">Pilih Kategori</option>
                     <option value="Elektronik">Elektronik</option>
                     <option value="Pakaian">Pakaian</option>
@@ -83,43 +83,41 @@ if (!isset($_SESSION['email'])) {
             
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Nama Barang <span class="text-red-500">*</span></label>
-                <input type="text" name="nama_barang" id="nama_barang" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                <input type="text" name="nama_barang" id="nama_barang" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" required>
             </div>
             
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Foto Barang</label>
                 <!-- PERBAIKAN: Tambahkan onchange untuk preview dan stopPropagation -->
-                <input type="file" name="foto" id="foto" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" accept="image/*" onchange="previewFoto(this)">
-                <p class="text-xs text-gray-500 mt-1">Format: JPG, PNG, JPEG (Max 2MB)</p>
+                <input type="file" name="foto" id="foto" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" accept="image/*" onchange="previewFoto(this)">
+                <p class="text-xs text-gray-500 mt-1" required>Format: JPG, PNG, JPEG (Max 2MB)</p>
                 <div id="fotoPreview" class="mt-2"></div>
             </div>
             
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Harga Modal <span class="text-red-500">*</span></label>
-                <input type="number" name="harga_modal" id="harga_modal" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" step="1000" required>
+                <input type="number" name="harga_modal" id="harga_modal" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" step="1000" required>
             </div>
             
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Harga Jual <span class="text-red-500">*</span></label>
-                <input type="number" name="harga_jual" id="harga_jual" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" step="1000" required>
+                <input type="number" name="harga_jual" id="harga_jual" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" step="1000" required>
             </div>
             
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Jumlah Stock <span class="text-red-500">*</span></label>
-                <input type="number" name="jumlah_stock" id="jumlah_stock" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                <input type="number" name="jumlah_stock" id="jumlah_stock" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" required>
             </div>
             
-            <div class="flex gap-3 mt-6">
-                <!-- PERBAIKAN: Tombol Batal type="button" -->
-                <button type="button" onclick="closeModal()" class="flex-1 px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-200">Batal</button>
-                <!-- PERBAIKAN: Tombol Simpan type="button" -->
-                <button type="button" id="btnSimpan" class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">Simpan</button>
+            <div class="flex gap-3 mt-6">                
+                <button type="button" onclick="closeModal()" class="flex-1 px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-200 cursor-pointer">Batal</button>
+                <button type="button" id="btnSimpan" class="flex-1 px-4 py-2 bg-gy text-white rounded-lg hover:bg-green-400 transition duration-200 cursor-pointer">Simpan</button>
             </div>
         </form>
     </div>
 </div>
 
-<!-- Modal Hapus Konfirmasi -->
+<!-- Popup Hapus Konfirmasi -->
 <div id="modalHapus" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 hidden">
     <div class="relative top-40 mx-auto p-5 border w-full max-w-md shadow-lg rounded-lg bg-white">
         <div class="mb-4">
@@ -139,7 +137,7 @@ if (!isset($_SESSION['email'])) {
 <?php require_once '../view/layouts/footer.php'; ?>
 
 <!-- Script AJAX dengan jQuery -->
-<script src="produk.js"></script>
+<script src="./js/produk.js"></script>
 <!-- Tambahan CSS untuk animasi -->
 <style>
 @keyframes slideIn {

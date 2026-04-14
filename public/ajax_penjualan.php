@@ -7,6 +7,24 @@ require_once '../config/koneksi.php';
 $action = $_POST['action'] ?? $_GET['action'] ?? '';
 
 switch ($action) {
+    case 'getProdukTerlaris':
+    try {
+        $query = "SELECT nama_produk, SUM(jumlah) as total_terjual 
+                  FROM detail_penjualan 
+                  GROUP BY produk_id 
+                  ORDER BY total_terjual DESC 
+                  LIMIT 5";
+
+        $stmt = $pdo->query($query);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        echo json_encode(['success' => true, 'data' => $data]);
+
+    } catch (PDOException $e) {
+        echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+    }
+    break;
+
     case 'getProduk':
         // Ambil semua produk yang memiliki stok > 0
         try {
@@ -79,6 +97,22 @@ switch ($action) {
             echo json_encode(['success' => false, 'message' => $e->getMessage()]);
         }
         break;
+        case 'getPenjualanHarian':
+    try {
+        $query = "SELECT DATE(tanggal) as tgl, SUM(total) as total_penjualan 
+                  FROM penjualan
+                  GROUP BY DATE(tanggal)
+                  ORDER BY tgl ASC";
+
+        $stmt = $pdo->query($query);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        echo json_encode(['success' => true, 'data' => $data]);
+
+    } catch (PDOException $e) {
+        echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+    }
+    break;
         
     default:
         echo json_encode(['success' => false, 'message' => 'Aksi tidak valid']);

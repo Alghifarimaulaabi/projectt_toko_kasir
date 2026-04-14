@@ -14,7 +14,6 @@
         saveProduk();
     });
     
-    // PERBAIKAN: Prevent form submit on enter key
     $('#formProduk input, #formProduk select').on('keypress', function(e) {
         if (e.which === 13) {
             e.preventDefault();
@@ -116,28 +115,36 @@ function loadProduk() {
 function saveProduk() {
     // Validasi form
     if (!$('#kategori').val()) {
-        showAlert('Kategori harus diisi!', 'error');
+        showAlert('Kategori harus diisi!', 'Peringatan');
         $('#kategori').focus();
         return false;
     }
     if (!$('#nama_barang').val()) {
-        showAlert('Nama barang harus diisi!', 'error');
+        showAlert('Nama barang harus diisi!', 'Peringatan');
         $('#nama_barang').focus();
         return false;
     }
     if (!$('#harga_modal').val()) {
-        showAlert('Harga modal harus diisi!', 'error');
+        showAlert('Harga modal harus diisi!', 'Peringatan');
         $('#harga_modal').focus();
         return false;
     }
     if (!$('#harga_jual').val()) {
-        showAlert('Harga jual harus diisi!', 'error');
+        showAlert('Harga jual harus diisi!', 'Peringatan');
         $('#harga_jual').focus();
         return false;
     }
     if (!$('#jumlah_stock').val()) {
-        showAlert('Jumlah stock harus diisi!', 'error');
+        showAlert('Jumlah stock harus diisi!', 'Peringatan');
         $('#jumlah_stock').focus();
+        return false;
+    }
+
+    let isEdit = $('#produkId').val();
+    let foto = $('#foto')[0].files.length;
+
+    if (!isEdit && foto === 0) {
+        showAlert('Foto harus diupload!', 'Peringatan');
         return false;
     }
     

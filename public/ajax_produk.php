@@ -46,6 +46,15 @@ switch ($action) {
         break;
         
     case 'create':
+        // VALIDASI FOTO
+        if (!isset($_FILES['foto']) || $_FILES['foto']['error'] != 0) {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Foto wajib diupload!'
+            ]);
+            exit;
+        }
+
         // Tambah produk baru
         $kategori = $_POST['kategori'] ?? '';
         $nama_barang = $_POST['nama_barang'] ?? '';
