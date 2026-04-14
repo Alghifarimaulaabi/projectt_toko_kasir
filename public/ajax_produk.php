@@ -17,8 +17,9 @@ switch ($action) {
     case 'get':
         // Ambil semua data produk
         try {
-            $query = "SELECT * FROM produk ORDER BY id DESC";
-            $stmt = $pdo->query($query);
+            $query = "SELECT * FROM produk WHERE user_email = ? ORDER BY id DESC";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$_SESSION['email']]);
             $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             echo json_encode(['success' => true, 'data' => $data]);
         } catch (PDOException $e) {
@@ -30,9 +31,9 @@ switch ($action) {
         // Ambil satu data produk
         $id = $_GET['id'] ?? 0;
         try {
-            $query = "SELECT * FROM produk WHERE id = ?";
+            $query = "SELECT * FROM produk WHERE id = ? AND user_email = ?";
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$id]);
+            $stmt->execute([$id, $_SESSION['email']]);
             $data = $stmt->fetch(PDO::FETCH_ASSOC);
             
             if ($data) {
@@ -77,10 +78,10 @@ switch ($action) {
         }
         
         try {
-            $query = "INSERT INTO produk (kategori, nama_barang, foto, harga_modal, harga_jual, jumlah_stock) 
-                      VALUES (?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO produk (kategori, nama_barang, foto, harga_modal, harga_jual, jumlah_stock, user_email) 
+                      VALUES (?, ?, ?, ?, ?, ?, ?)";
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$kategori, $nama_barang, $foto, $harga_modal, $harga_jual, $jumlah_stock]);
+            $stmt->execute([$kategori, $nama_barang, $foto, $harga_modal, $harga_jual, $jumlah_stock, $_SESSION['email']]);
             
             echo json_encode(['success' => true, 'message' => 'Produk berhasil ditambahkan']);
         } catch (PDOException $e) {
@@ -122,9 +123,11 @@ switch ($action) {
                 }
             }
             
-            $query = "UPDATE produk SET kategori=?, nama_barang=?, foto=?, harga_modal=?, harga_jual=?, jumlah_stock=? WHERE id=?";
+           $query = "UPDATE produk SET kategori=?, nama_barang=?, foto=?, harga_modal=?, harga_jual=?, jumlah_stock=? WHERE id=? AND user_email=?";
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$kategori, $nama_barang, $foto, $harga_modal, $harga_jual, $jumlah_stock, $id]);
+            $stmt->execute([
+    $kategori, $nama_barang, $foto, $harga_modal, $harga_jual, $jumlah_stock, $id, $_SESSION['email']
+]);
             
             echo json_encode(['success' => true, 'message' => 'Produk berhasil diupdate']);
         } catch (PDOException $e) {
@@ -147,9 +150,9 @@ switch ($action) {
                 unlink($uploadDir . $data['foto']);
             }
             
-            $query = "DELETE FROM produk WHERE id = ?";
+            $query = "DELETE FROM produk WHERE id = ? AND user_email = ?";
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$id]);
+            $stmt->execute([$id, $_SESSION['email']]);
             
             echo json_encode(['success' => true, 'message' => 'Produk berhasil dihapus']);
         } catch (PDOException $e) {

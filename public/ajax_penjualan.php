@@ -28,8 +28,9 @@ switch ($action) {
     case 'getProduk':
         // Ambil semua produk yang memiliki stok > 0
         try {
-            $query = "SELECT * FROM produk WHERE jumlah_stock > 0 ORDER BY nama_barang ASC";
-            $stmt = $pdo->query($query);
+            $query = "SELECT * FROM produk WHERE jumlah_stock > 0 AND user_email = ? ORDER BY nama_barang ASC";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$_SESSION['email']]);
             $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             echo json_encode(['success' => true, 'data' => $data]);
         } catch (PDOException $e) {
@@ -41,8 +42,8 @@ switch ($action) {
         // Cari produk
         $keyword = $_GET['keyword'] ?? '';
         try {
-            $query = "SELECT * FROM produk WHERE (nama_barang LIKE ? OR kategori LIKE ?) AND jumlah_stock > 0";
-            $stmt = $pdo->prepare($query);
+            $query = "SELECT * FROM produk WHERE (nama_barang LIKE ? OR kategori LIKE ?) AND jumlah_stock > 0 AND user_email = ?";
+            $stmt->execute(["%$keyword%", "%$keyword%", $_SESSION['email']]);
             $stmt->execute(["%$keyword%", "%$keyword%"]);
             $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             echo json_encode(['success' => true, 'data' => $data]);
@@ -100,11 +101,12 @@ switch ($action) {
         case 'getPenjualanHarian':
     try {
         $query = "SELECT DATE(tanggal) as tgl, SUM(total) as total_penjualan 
-                  FROM penjualan
-                  GROUP BY DATE(tanggal)
-                  ORDER BY tgl ASC";
-
-        $stmt = $pdo->query($query);
+          FROM penjualan
+          WHERE user_email = ?
+          GROUP BY DATE(tanggal)
+          ORDER BY tgl ASC";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$_SESSION['email']]);
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         echo json_encode(['success' => true, 'data' => $data]);
