@@ -2,8 +2,8 @@
     <!-- sidebar -->
     <div class="s w-3xs h-full fixed bg-go shadow-lg">
         <div class="p-4 border-b border-white/20">
-            <h2 class="text-white font-poppins font-semibold text-xl">
-                <?=  $title ?>
+            <h2 class="text-white font-poppins font-semibold text-xl text-center">
+                Toko <?= $_SESSION['toko'] ?? 'Toko Saya' ?>
             </h2>
         </div>
 

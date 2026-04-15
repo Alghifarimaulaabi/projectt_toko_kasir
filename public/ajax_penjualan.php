@@ -43,8 +43,8 @@ switch ($action) {
         $keyword = $_GET['keyword'] ?? '';
         try {
             $query = "SELECT * FROM produk WHERE (nama_barang LIKE ? OR kategori LIKE ?) AND jumlah_stock > 0 AND user_email = ?";
-            $stmt->execute(["%$keyword%", "%$keyword%", $_SESSION['email']]);
-            $stmt->execute(["%$keyword%", "%$keyword%"]);
+            $stmt = $pdo->prepare($query);
+            $stmt->execute(["%$keyword%", "%$keyword%", $_SESSION   ['email']]);
             $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             echo json_encode(['success' => true, 'data' => $data]);
         } catch (PDOException $e) {

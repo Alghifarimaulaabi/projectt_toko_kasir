@@ -23,6 +23,7 @@ if (!isset($_SESSION['email'])) {
                 <h2 class="text-lg font-semibold">Daftar Produk</h2>
                 <input type="text" id="searchProduk" placeholder="Cari produk..."
                     class="w-full mt-2 p-2 border rounded-2xl bg-gray-200">
+                
             </div>
 
             <div id="daftarProduk" class="grid grid-cols-3 gap-4">
@@ -73,8 +74,9 @@ if (!isset($_SESSION['email'])) {
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="./js/penjualan.js"></script>
+<h1 class="text-amber-500 ml-64">dsadsad</h1>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./js/penjualan.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 <?php require_once '../view/layouts/footer.php'; ?>

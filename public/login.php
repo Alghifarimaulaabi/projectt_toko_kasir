@@ -14,15 +14,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($user) {
         if (password_verify($password, $user['password'])) {
-            $_SESSION['email'] = $user['email'];
-            header("Location: dashboard.php");
-            exit;
-        } else {
+    $_SESSION['email'] = $user['email'];
+    $_SESSION['nama']  = $user['nama'];
+    $_SESSION['toko']  = $user['toko'];
+
+    header("Location: dashboard.php");
+    exit;
+} else {
             $error = "Password salah!";
         }
     } else {
         $error = "User tidak ditemukan!";
     }
+
+    
 }
 ?>
 
