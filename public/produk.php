@@ -88,7 +88,7 @@ if (!isset($_SESSION['email'])) {
             
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Foto Barang</label>
-                <!-- PERBAIKAN: Tambahkan onchange untuk preview dan stopPropagation -->
+                <!-- PERBAIKAN: Tambahkan onchange untuk preview dan stopPropagation --> 
                 <input type="file" name="foto" id="foto" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" accept="image/*" onchange="previewFoto(this)">
                 <p class="text-xs text-gray-500 mt-1" required>Format: JPG, PNG, JPEG (Max 2MB)</p>
                 <div id="fotoPreview" class="mt-2"></div>

@@ -95,8 +95,11 @@ function updateKeranjang() {
     
     $('#keranjang').html(html);
     $('#totalHarga').text('Rp ' + formatRupiah(total));
+
+    $('#uangBayar').val('');
+    $('#kembalian').text('Rp 0');
+    $('#kembalian').removeClass('text-green-600 text-red-600');
     
-    hitungKembalian();
 }
 
 function ubahJumlah(index, aksi) {
@@ -126,13 +129,36 @@ function hitungKembalian() {
     let total = 0;
     keranjang.forEach(item => total += item.harga * item.qty);
     
-    let uangBayar = parseInt($('#uangBayar').val()) || 0;
+    let uangInput = $('#uangBayar').val();
+
+    // ❗ kalau belum isi, jangan tampilkan apa-apa
+    if (uangInput === '' || parseInt(uangInput) === 0) {
+        $('#kembalian').text('Rp 0');
+        $('#kembalian').removeClass('text-green-600 text-red-600');
+        return;
+    }
+
+    let uangBayar = parseInt(uangInput);
+
+    // ❗ cegah minus
+    if (uangBayar < 0) {
+        uangBayar = 0;
+        $('#uangBayar').val(0);
+    }
+
     let kembalian = uangBayar - total;
-    
-    $('#kembalian').text('Rp ' + formatRupiah(Math.abs(kembalian)));
-    $('#kembalian').toggleClass('text-green-600', kembalian >= 0);
-    $('#kembalian').toggleClass('text-red-600', kembalian < 0);
+
+    if (uangBayar < total) {
+        // ❌ uang kurang → jangan tampilkan kembalian
+        $('#kembalian').text('Uang kurang');
+        $('#kembalian').removeClass('text-green-600').addClass('text-red-600');
+    } else {
+        // ✅ uang cukup → tampilkan kembalian
+        $('#kembalian').text('Rp ' + formatRupiah(kembalian));
+        $('#kembalian').removeClass('text-red-600').addClass('text-green-600');
+    }
 }
+
 
 function prosesTransaksi() {
     if (keranjang.length === 0) {

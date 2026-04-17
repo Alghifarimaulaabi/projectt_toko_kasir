@@ -7,5 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- link cdn icon fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    
 
-<body class="bg-[#eee]">
+<body class="bg-gray-100">

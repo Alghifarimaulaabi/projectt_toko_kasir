@@ -20,13 +20,13 @@ if (!isset($_SESSION['email'])) {
         <div class="flex gap-4 items-end">
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Filter Tanggal</label>
-                <input type="date" id="filterTanggal" class="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400">
+                <input type="date" id="filterTanggal" class="border w-[140px] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400">
             </div>
             <button onclick="filterByDate()" class="bg-go text-white px-2 h-10 rounded-lg hover:bg-green-300 transition">
                 Filter
             </button>
-            <button onclick="resetFilter()" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition">
-                Lihat Semua Transaksi
+            <button onclick="resetFilter()" class="bg-gy text-white h-10 px-4 py-2 rounded-lg hover:bg-gray-600 transition">
+                Lihat Semua
             </button>
         </div>
     </div>
@@ -52,7 +52,7 @@ if (!isset($_SESSION['email'])) {
                     <button onclick="toggleDetail(this)" class="btn-detail px-4 py-2 bg-go text-white rounded-lg hover:bg-green-300 transition">
                         Detail
                     </button>
-                    <button onclick="cetakTransaksi(this)" class="btn-cetak px-4 py-2 btn-secondary text-white rounded-lg hover:bg-green-300 transition">
+                    <button onclick="cetakTransaksi(this)" class="btn-cetak px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-300 transition">
                         Cetak
                     </button>
                 </div>

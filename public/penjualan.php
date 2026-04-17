@@ -15,7 +15,7 @@ if (!isset($_SESSION['email'])) {
 <div class="ml-64 p-6 bg-gray-100 min-h-screen">
     <h1 class="text-2xl font-bold mb-6">Transaksi Penjualan</h1>
     
-    <div class="flex gap-6">
+    <div class="flex gap-6 flex-col md:flex-row">
         
         <!-- DAFTAR PRODUK -->
         <div class="flex-1 bg-white rounded-2xl p-4">
@@ -26,7 +26,7 @@ if (!isset($_SESSION['email'])) {
                 
             </div>
 
-            <div id="daftarProduk" class="grid grid-cols-3 gap-4">
+            <div id="daftarProduk" class="grid grid-cols-2 gap-4 md:grid-cols-3">
                 
             </div>
         </div>
@@ -44,7 +44,6 @@ if (!isset($_SESSION['email'])) {
                 <div class="text-gray-400 text-center">Keranjang kosong</div>
             </div>
 
-            <!-- Footer -->
             <div class="p-4 border-t space-y-3">
                 
                 <div class="flex justify-between font-semibold">
@@ -54,7 +53,7 @@ if (!isset($_SESSION['email'])) {
 
                 <div>
                     <label class="text-sm">Uang Bayar</label>
-                    <input type="number" id="uangBayar"
+                    <input type="number" id="uangBayar" min="0"
                         class="w-full border rounded p-2 mt-1"
                         placeholder="Masukkan uang">
                 </div>
@@ -79,4 +78,5 @@ if (!isset($_SESSION['email'])) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="./js/penjualan.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
-<?php require_once '../view/layouts/footer.php'; ?>
+</body>
+</html>
