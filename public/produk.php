@@ -14,17 +14,20 @@ if (!isset($_SESSION['email'])) {
 <?php require_once '../view/layouts/sidebar.php'; ?>
 
 <div class="ml-64 p-8">
+    <h1 class="f font-bold text-4xl text-[#1a1a1a] mb-2 md:hidden">
+        Toko <?= $_SESSION['toko'] ?? 'Toko Saya' ?>
+    </h1>
     <div class="max-w-7xl mx-auto">
         <!-- Header -->
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-3xl font-bold text-gray-800">Manajemen Produk</h1>
+            <h1 class="text-lg font-bold text-gray-800 md:text-4xl">Manajemen Produk</h1>
             <button type="button" onclick="resetForm()" 
-                class="bg-[#1F6F5F] hover:bg-[#6FCF97] cursor-pointer text-white px-4 py-2 rounded-lg flex items-center gap-2 transition duration-200"
+                class="bg-[#1F6F5F] hover:bg-[#6FCF97] cursor-pointer text-white px-4 py-2 rounded-lg flex items-center gap-2 transition duration-200 w-[150px] h-11 md:w-auto"
                 id="btnTambahProduk">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
-                Tambah Produk
+                Tambah
             </button>
         </div>
 
@@ -55,9 +58,9 @@ if (!isset($_SESSION['email'])) {
 
 <!-- Modal Tambah/Edit Produk -->
 <div id="modalProduk" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 hidden">
-    <div class="relative top-20 mx-auto p-5 border w-full max-w-md shadow-lg rounded-lg bg-white">
+    <div class="relative top-20 mx-auto p-5 border w-[300px] max-w-md shadow-lg rounded-lg bg-white md:w-full">
         <div class="flex justify-between items-center mb-4">
-            <h3 class="text-lg font-semibold text-gray-900" id="modalTitle">Tambah Produk</h3>
+            <h3 class="text-lg font-semibold text-gray-900 md:" id="modalTitle">Tambah Produk</h3>
             <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -132,7 +135,8 @@ if (!isset($_SESSION['email'])) {
     </div>
 </div>
 
-<script src="./src/script.js"></script>
+<div class="tambahan"></div>
+
 
 <?php require_once '../view/layouts/footer.php'; ?>
 

@@ -9,16 +9,56 @@ $action = $_POST['action'] ?? $_GET['action'] ?? '';
 switch ($action) {
     case 'getProdukTerlaris':
     try {
-        $query = "SELECT nama_produk, SUM(jumlah) as total_terjual 
-                  FROM detail_penjualan 
-                  GROUP BY produk_id 
+        $query = "SELECT dp.nama_produk, SUM(dp.jumlah) as total_terjual 
+                  FROM detail_penjualan dp
+                  JOIN penjualan p ON dp.penjualan_id = p.id
+                  WHERE p.user_email = ?
+                  GROUP BY dp.produk_id 
                   ORDER BY total_terjual DESC 
                   LIMIT 5";
 
-        $stmt = $pdo->query($query);
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$_SESSION['email']]);
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         echo json_encode(['success' => true, 'data' => $data]);
+
+    } catch (PDOException $e) {
+        echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+    }
+    break;
+
+    case 'getDashboardSummary':
+    try {
+        $email = $_SESSION['email'];
+
+        // Total Penjualan (sementara dianggap profit)
+        $query1 = "SELECT SUM(total) as total_penjualan 
+                   FROM penjualan 
+                   WHERE user_email = ?";
+        $stmt1 = $pdo->prepare($query1);
+        $stmt1->execute([$email]);
+        $total_penjualan = $stmt1->fetch(PDO::FETCH_ASSOC)['total_penjualan'] ?? 0;
+
+        // Total Transaksi Hari Ini
+        $query2 = "SELECT COUNT(*) as total_transaksi 
+                   FROM penjualan 
+                   WHERE user_email = ? AND DATE(tanggal) = CURDATE()";
+        $stmt2 = $pdo->prepare($query2);
+        $stmt2->execute([$email]);
+        $total_transaksi = $stmt2->fetch(PDO::FETCH_ASSOC)['total_transaksi'] ?? 0;
+
+        // Pengeluaran (sementara 0 dulu)
+        $pengeluaran = 0;
+
+        echo json_encode([
+            'success' => true,
+            'data' => [
+                'profit' => $total_penjualan,
+                'pengeluaran' => $pengeluaran,
+                'transaksi' => $total_transaksi
+            ]
+        ]);
 
     } catch (PDOException $e) {
         echo json_encode(['success' => false, 'message' => $e->getMessage()]);

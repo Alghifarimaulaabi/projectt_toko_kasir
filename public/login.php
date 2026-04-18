@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 
-<body class="min-h-screen flex items-center justify-center bg-[#6FCF97] font-poppins">
+<body class="min-h-screen flex items-center justify-center bg-[#6FCF97] font-poppins overflow-y-auto">
 
     <div class="bg-white p-8 shadow-lg rounded-2xl w-80 h-[400px]">
         
@@ -129,6 +129,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="w-72 h-72 fixed bottom-[-80px] right-[-120px] rounded-full bg-[#8adadc] opacity-70 -z-10"></div>
 
     <div class="w-72 h-72 fixed top-[-80px] left-[-120px] rounded-full bg-[#e0e1dd] opacity-70 -z-10"></div>
+
+   <div class="back absolute left-2 top-2.5 cursor-pointer bg-go rounded-2xl p-2 flex justify-center items-center">
+    <a href="index.php">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 24 24" 
+     fill="none" 
+     stroke="currentColor" 
+     stroke-width="2" 
+     stroke-linecap="round" 
+     class="text-white"
+     stroke-linejoin="round">
+  <path d="M19 12H5"/>
+  <path d="M12 19l-7-7 7-7"/>
+</svg>
+</a>
+</div>
+
 
 </body>
 </html>

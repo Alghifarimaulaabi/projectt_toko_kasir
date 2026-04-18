@@ -13,7 +13,11 @@ if (!isset($_SESSION['email'])) {
 <?php require_once '../view/layouts/sidebar.php'; ?>
 
 <div class="ml-64 p-6 bg-gray-100 min-h-screen">
+    <h1 class="f font-bold text-4xl text-[#1a1a1a] mb-2 md:hidden">
+        Toko <?= $_SESSION['toko'] ?? 'Toko Saya' ?>
+    </h1>
     <h1 class="text-2xl font-bold mb-6">Transaksi Penjualan</h1>
+    
     
     <div class="flex gap-6 flex-col md:flex-row">
         
@@ -26,13 +30,13 @@ if (!isset($_SESSION['email'])) {
                 
             </div>
 
-            <div id="daftarProduk" class="grid grid-cols-2 gap-4 md:grid-cols-3">
+            <div id="daftarProduk" class="grid grid-cols-1 gap-4 md:grid-cols-3">
                 
             </div>
         </div>
 
         <!-- KERANJANG -->
-        <div class="w-96 bg-white rounded-xl shadow flex flex-col">
+        <div class="w-full md:w-96 bg-white rounded-xl shadow flex flex-col">
             
             <!-- Header -->
             <div class="p-4 border-b">
@@ -73,10 +77,10 @@ if (!isset($_SESSION['email'])) {
     </div>
 </div>
 
-<h1 class="text-amber-500 ml-64">dsadsad</h1>
+<div class="tambahan"></div>
 
+<?php require_once '../view/layouts/cLogout.php'?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="./js/penjualan.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
-</body>
-</html>
+
+<?php require_once '../view/layouts/footer.php'?>

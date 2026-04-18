@@ -168,11 +168,11 @@
         </p>
     </div>
     
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 p-4 sm:p-5 max-w-6xl mx-auto">
+    <!-- <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 p-4 sm:p-5 max-w-6xl mx-auto">
         <img src="img/bg1.jpeg" class="w-full rounded-2xl hover:scale-105 transition duration-300 object-cover h-48 sm:h-56 md:h-64 shadow-lg" alt="">
         <img src="img/bg1.jpeg" class="w-full rounded-2xl hover:scale-105 transition duration-300 object-cover h-48 sm:h-56 md:h-64 shadow-lg" alt="">
         <img src="img/bg1.jpeg" class="w-full rounded-2xl hover:scale-105 transition duration-300 object-cover h-48 sm:h-56 md:h-64 shadow-lg" alt="">
-    </div>
+    </div> -->
 </div>
 
     <!-- feature -->
@@ -192,14 +192,14 @@
             </p>
         </div>
         <div class="md:w-1/2 flex justify-center">
-            <img src="img/bg1.jpeg" class="w-full max-w-[300px] sm:max-w-sm rounded-2xl hover:scale-105 transition duration-300 shadow-lg h-48 sm:h-56 object-cover" alt="">
+            <img src="img/manajemen.png" class="w-full max-w-[300px] sm:max-w-sm rounded-2xl hover:scale-105 transition duration-300 shadow-lg h-48 sm:h-56 object-cover" alt="">
         </div>
     </div>
 
     <!-- Feature 2 -->
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-10 mb-12 md:mb-16">
         <div class="md:w-1/2 order-2 md:order-1 flex justify-center">
-            <img src="img/bg1.jpeg" class="w-full max-w-[300px] sm:max-w-sm rounded-2xl hover:scale-105 transition duration-300 shadow-lg h-48 sm:h-56 object-cover" alt="">
+            <img src="img/grafik.png" class="w-full max-w-[300px] sm:max-w-sm rounded-2xl hover:scale-105 transition duration-300 shadow-lg h-48 sm:h-56 object-cover" alt="">
         </div>
         <div class="md:w-1/2 order-1 md:order-2">
             <p class="text-sm sm:text-base text-gray-700 leading-relaxed text-center md:text-left">
@@ -218,7 +218,7 @@
             </p>
         </div>
         <div class="md:w-1/2 flex justify-center">
-            <img src="img/bg1.jpeg" class="w-full max-w-[300px] sm:max-w-sm rounded-2xl hover:scale-105 transition duration-300 shadow-lg h-48 sm:h-56 object-cover" alt="">
+            <img src="img/riwayat.png" class="w-full max-w-[300px] sm:max-w-sm rounded-2xl hover:scale-105 transition duration-300 shadow-lg h-48 sm:h-56 object-cover" alt="">
         </div>
     </div>
 </div>

@@ -18,7 +18,7 @@ function displayProduk(produk) {
     let html = '';
     produk.forEach(item => {
         html += `
-            <div class="border p-3 rounded-2xl">
+            <div class=" p-3 rounded-2xl">
                 <img src="../uploads/${item.foto}" class="w-full h-32 object-cover">
                 <h3 class="font-semibold">${item.nama_barang}</h3>
                 <p>Rp ${formatRupiah(item.harga_jual)}</p>

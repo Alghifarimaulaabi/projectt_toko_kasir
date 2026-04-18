@@ -7,9 +7,9 @@
             </h2>
         </div>
 
-        <ul class="flex flex-col mt-4 px-3 gap-3.5">
+        <ul class="flex flex-col mt-4 px-3">
             <a href="dashboard.php">
-                <li class="mx-auto w-12 h-auto p-2 bg-gradient-to-r from-[#2FA084] to-[#6FCF97] rounded-2xl hover:scale-105 transition duration-300 md:w-full bg-gl border border-white">
+                <li class="mx-auto w-12 mb-4 h-auto p-2 bg-gradient-to-r from-[#2FA084] to-[#6FCF97] rounded-2xl hover:scale-105 transition duration-300 md:w-full bg-gl border border-white">
                     <div class="flex items-center gap-3">
                         <svg class="text-white w-5 h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
@@ -19,7 +19,7 @@
                 </li>
             </a>
             <a href="penjualan.php">
-                <li class="mx-auto w-12 h-auto p-2 bg-gradient-to-r from-[#2FA084] to-[#6FCF97] rounded-2xl hover:scale-105 transition duration-300 md:w-full bg-gl border border-white">
+                <li class="mx-auto w-12 h-auto mb-4 p-2 bg-gradient-to-r from-[#2FA084] to-[#6FCF97] rounded-2xl hover:scale-105 transition duration-300 md:w-full bg-gl border border-white">
                     <div class="flex items-center gap-3">
                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -30,7 +30,7 @@
                 </li>
             </a>
             <a href="produk.php">
-                <li class="mx-auto w-12 h-auto p-2 bg-gradient-to-r from-[#2FA084] to-[#6FCF97] rounded-2xl hover:scale-105 transition duration-300 md:w-full bg-gl border border-white">
+                <li class="mx-auto w-12 h-auto mb-4 p-2 bg-gradient-to-r from-[#2FA084] to-[#6FCF97] rounded-2xl hover:scale-105 transition duration-300 md:w-full bg-gl border border-white">
                     <div class="flex items-center gap-3">
                         <svg class="w-5 h-5 text-white transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7L4 7M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16m8 0H8m8 0h2a2 2 0 002-2V9a2 2 0 00-2-2h-2m-8 0H6a2 2 0 00-2 2v10a2 2 0 002 2h2"></path>
@@ -40,7 +40,7 @@
                 </li>
             </a>
             <a href="riwayat.php">
-                <li class="mx-auto w-12 h-auto p-2 bg-gradient-to-r from-[#2FA084] to-[#6FCF97] rounded-2xl hover:scale-105 transition duration-300 md:w-full bg-gl border border-white">
+                <li class="mx-auto w-12 mb-4 h-auto p-2 bg-gradient-to-r from-[#2FA084] to-[#6FCF97] rounded-2xl hover:scale-105 transition duration-300 md:w-full bg-gl border border-white">
                     <div class="flex items-center gap-3">
                     <div class="flex items-center gap-3">
                         <svg class="w-5 h-5 text-white transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -52,8 +52,8 @@
             </a>
         </ul>
 
-        <a href="../public/logout.php" class="absolute bottom-4 left-4 right-4">
-            <div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-red-500 hover:bg-red-500/50 transition-all duration-300 group">
+        <a href="../public/logout.php" class="bottom-14 mb-64 md:static mt-64">
+            <div class="flex items-center gap-3 px-4 py-2 rounded-lg bg-red-500 hover:bg-red-500/50 transition-all duration-300 group md:rounded-none mt-64">
                 <svg class="w-5 h-5 text-white transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                 </svg>
@@ -64,34 +64,31 @@
 </div>
 
 <style>
-    /* Khusus HP: sembunyikan teks, perkecil lebar sidebar */
     @media (max-width: 768px) {
-        /* Sembunyikan semua teks di sidebar */
-        .s ul span,
-        .s .absolute span {
-            display: none !important;
-        }
-        
-        /* Perkecil lebar sidebar jadi hanya cukup untuk icon */
-        .s {
-            width: 70px !important;
-        }
-        
-        /* Pusatkan icon di tengah */
-        .s ul .flex {
-            justify-content: center !important;
-        }
-        
-        /* Hapus gap agar icon lebih rapat */
-        .s ul .flex {
-            gap: 0 !important;
-        }
-        
-        /* Sesuaikan padding */
-        .s ul {
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-        }
+        .s span {
+        display: none !important;
+    }
+
+    /* sidebar kecil */
+    .s {
+        width: 70px !important;
+    }
+
+    /* center icon */
+    .s .flex {
+        justify-content: center !important;
+        gap: 0 !important;
+    }
+
+    .s ul {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* geser konten */
+    .ml-64 {
+        margin-left: 70px !important;
+    }
         
         /* Tombol logout di mobile */
         .s .absolute {

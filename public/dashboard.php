@@ -5,57 +5,130 @@ if (!isset($_SESSION['email'])) {
     header("Location: login.php");
     exit;
 }
-
-
 ?>
 
 <?php require_once '../view/layouts/header.php'?>
 
+
 <!-- nama halaman -->
 <?php $title = "Dashboard"; ?>
 
+<div class="flex">
 
-<?php require_once '../view/layouts/sidebar.php'?>
+    <!-- SIDEBAR -->
+    <?php require_once '../view/layouts/sidebar.php'?>
 
-<div class="flex gap-4 ml-64 justify-center ">
-    <div class="w w-80 h-28 p-3 rounded-2xl bg-white">
-        <h3>Profit</h3>
-    </div>
-    <div class="w w-80 h-28 p-3 rounded-2xl bg-white">
-        <h3>Profit</h3>
-    </div>
-    <div class="w w-80 h-28 p-3 rounded-2xl bg-white">
-        <h3>Profit</h3>
-    </div>
-</div>
+    <!-- CONTENT -->
+    <div class="ml-64 w-full p-4 overflow-y-auto">
 
-<div class="ml-64 p-6">
-    <h1 class="text-2xl font-bold mb-6">Dashboard</h1>
-
-    <div class="flex gap-4 overflow-auto flex-col lg:flex-row">
+    <h1 class="f font-bold text-4xl text-[#1a1a1a] mb-2 md:hidden">
+        Toko <?= $_SESSION['toko'] ?? 'Toko Saya' ?>
+    </h1>
+        <h1 class="font-bold mb-6 text-gray-800 text-lg md:text-2xl">
+            Dashboard
+        </h1>
         
-        <!-- Chart Barang Terlaris -->
-    <div class="bg-white p-4 rounded-xl shadow flex-1">
-            <h2 class="text-lg font-semibold mb-4">Barang Terlaris</h2>
-            <div class="h-auto" class="flex justify-center">
-                <canvas id="chartTerlaris"></canvas>
+
+        <!-- CARD -->
+        <div class="flex gap-6 justify-center flex-wrap mb-6">
+            
+            <!-- Profit -->
+            <div class="group w-80 h-28 p-4 rounded-xl bg-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border-l-8 border-green-500">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-gray-500 text-sm font-semibold uppercase tracking-wide">Profit</h3>
+                        <p id="profit" class="text-2xl font-bold text-gray-800 mt-1">Rp 0</p>
+                    </div>
+                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                </div>
             </div>
+
+            <!-- Pengeluaran -->
+            <div class="group w-80 h-28 p-4 rounded-xl bg-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border-l-8 border-red-500">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-gray-500 text-sm font-semibold uppercase tracking-wide">Pengeluaran</h3>
+                        <p id="pengeluaran" class="text-2xl font-bold text-gray-800 mt-1">Rp 0</p>
+                    </div>
+                    <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transaksi -->
+            <div class="group w-80 h-28 p-4 rounded-xl bg-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border-l-8 border-blue-500">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-gray-500 text-sm font-semibold uppercase tracking-wide">Transaksi Hari Ini</h3>
+                        <p id="transaksi" class="text-2xl font-bold text-gray-800 mt-1">0</p>
+                    </div>
+                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Chart Penjualan -->
-        <div class="bg-white p-4 rounded-xl shadow flex-1">
-            <h2 class="text-lg font-semibold mb-4">Grafik Penjualan</h2>
-            <div class="h-auto flex justify-center">
-                <canvas id="chartPenjualan" class=""></canvas>
-            </div>
-        </div>
+        <!-- CHART -->
+        <div class="flex gap-4 flex-col lg:flex-row">
 
+            <!-- Barang Terlaris -->
+            <div class="bg-white p-4 rounded-xl shadow-md flex-1">
+                <h2 class="text-lg font-semibold mb-4 text-gray-700">Barang Terlaris</h2>
+                <div class="flex justify-center">
+                    <canvas id="chartTerlaris"></canvas>
+                </div>
+            </div>
+
+            <!-- Penjualan -->
+            <div class="bg-white p-4 rounded-xl shadow-md flex-1">
+                <h2 class="text-lg font-semibold mb-4 text-gray-700">Grafik Penjualan</h2>
+                <div class="flex justify-center">
+                    <canvas id="chartPenjualan"></canvas>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
+<div class="tambahan"></div>
+
+
 <?php require_once '../view/layouts/cLogout.php'?>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
+function loadDashboard() {
+    fetch('ajax_penjualan.php?action=getDashboardSummary')
+        .then(res => res.json())
+        .then(res => {
+            if (res.success) {
+                document.getElementById('profit').innerText =
+                    'Rp ' + Number(res.data.profit).toLocaleString();
+
+                document.getElementById('pengeluaran').innerText =
+                    'Rp ' + Number(res.data.pengeluaran).toLocaleString();
+
+                document.getElementById('transaksi').innerText =
+                    res.data.transaksi;
+            }
+        });
+}
+
 function loadChart() {
     fetch('ajax_penjualan.php?action=getProdukTerlaris')
         .then(res => res.json())
@@ -82,9 +155,7 @@ function loadChart() {
                             legend: { display: false }
                         },
                         scales: {
-                            y: {
-                                beginAtZero: true
-                            }
+                            y: { beginAtZero: true }
                         }
                     }
                 });
@@ -116,13 +187,8 @@ function loadChartPenjualan() {
                     },
                     options: {
                         responsive: true,
-                        plugins: {
-                            legend: { display: true }
-                        },
                         scales: {
-                            y: {
-                                beginAtZero: true
-                            }
+                            y: { beginAtZero: true }
                         }
                     }
                 });
@@ -130,8 +196,13 @@ function loadChartPenjualan() {
         });
 }
 
-document.addEventListener('DOMContentLoaded', loadChartPenjualan);
+document.addEventListener('DOMContentLoaded', () => {
+    loadDashboard();
+    loadChart();
+    loadChartPenjualan();
+});
 
-document.addEventListener('DOMContentLoaded', loadChart);
+
 </script>
+
 <?php require_once '../view/layouts/footer.php'?>
