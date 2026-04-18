@@ -33,7 +33,7 @@ if (!isset($_SESSION['email'])) {
         <div class="flex gap-6 justify-center flex-wrap mb-6">
             
             <!-- Profit -->
-            <div class="group w-80 h-28 p-4 rounded-xl bg-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border-l-8 border-green-500">
+            <div class="group flex-1 h-28 p-4 rounded-xl bg-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border-l-8 border-green-500">
                 <div class="flex items-center justify-between">
                     <div>
                         <h3 class="text-gray-500 text-sm font-semibold uppercase tracking-wide">Profit</h3>
@@ -48,24 +48,9 @@ if (!isset($_SESSION['email'])) {
                 </div>
             </div>
 
-            <!-- Pengeluaran -->
-            <div class="group w-80 h-28 p-4 rounded-xl bg-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border-l-8 border-red-500">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h3 class="text-gray-500 text-sm font-semibold uppercase tracking-wide">Pengeluaran</h3>
-                        <p id="pengeluaran" class="text-2xl font-bold text-gray-800 mt-1">Rp 0</p>
-                    </div>
-                    <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
 
             <!-- Transaksi -->
-            <div class="group w-80 h-28 p-4 rounded-xl bg-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border-l-8 border-blue-500">
+            <div class="group flex-1 h-28 p-4 rounded-xl bg-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border-l-8 border-blue-500">
                 <div class="flex items-center justify-between">
                     <div>
                         <h3 class="text-gray-500 text-sm font-semibold uppercase tracking-wide">Transaksi Hari Ini</h3>
