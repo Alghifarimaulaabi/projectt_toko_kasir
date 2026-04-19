@@ -7,7 +7,8 @@ Aplikasi kasir berbasis web untuk mencatat penjualan dan stok barang.
 - Login Admin
 - Tambah, edit, hapus produk
 - Transaksi penjualan
-- Laporan
+- Riwayat Transaksi
+- Cetak File
 
 ## Cara Install
 1. Download project
@@ -20,4 +21,4 @@ Aplikasi kasir berbasis web untuk mencatat penjualan dan stok barang.
 - Tailwind CSS
 
 ## Author
-Alghifari
+Muhammad Alghifari Maula Abi
