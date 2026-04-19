@@ -33,7 +33,7 @@ if (!isset($_SESSION['email'])) {
         <div class="flex gap-6 justify-center flex-wrap mb-6">
             
             <!-- Profit -->
-            <div class="group flex-1 h-28 p-4 rounded-xl bg-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border-l-8 border-green-500">
+            <div class="group flex-1 h-28 p-4 rounded-xl bg-white shadow-md hover:shadow-xl hover:scale-100 transition-all duration-300 border-l-8 border-green-500">
                 <div class="flex items-center justify-between">
                     <div>
                         <h3 class="text-gray-500 text-sm font-semibold uppercase tracking-wide">Profit</h3>
@@ -48,22 +48,6 @@ if (!isset($_SESSION['email'])) {
                 </div>
             </div>
 
-
-            <!-- Transaksi -->
-            <div class="group flex-1 h-28 p-4 rounded-xl bg-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border-l-8 border-blue-500">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h3 class="text-gray-500 text-sm font-semibold uppercase tracking-wide">Transaksi Hari Ini</h3>
-                        <p id="transaksi" class="text-2xl font-bold text-gray-800 mt-1">0</p>
-                    </div>
-                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
 
         </div>
 

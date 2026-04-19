@@ -228,8 +228,8 @@
     <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
         
         <div class="text-center sm:text-left">
-            <h2 class="text-lg sm:text-xl font-bold mb-2">Kasir App</h2>
-            <p class="text-xs sm:text-sm">Aplikasi kasir sederhana untuk UMKM.</p>
+            <h2 class="text-lg sm:text-xl font-bold mb-2">Toko Kasir</h2>
+            <p class="text-xs sm:text-sm">Website kasir sederhana untuk UMKM.</p>
         </div>
 
         <div class="text-center sm:text-left">

@@ -44,7 +44,9 @@ switch ($action) {
         // Total Transaksi Hari Ini
         $query2 = "SELECT COUNT(*) as total_transaksi 
                    FROM penjualan 
-                   WHERE user_email = ? AND DATE(tanggal) = CURDATE()";
+                   WHERE user_email = ? 
+                   AND tanggal >= CURDATE() 
+                   AND tanggal < CURDATE() + INTERVAL 1 DAY";
         $stmt2 = $pdo->prepare($query2);
         $stmt2->execute([$email]);
         $total_transaksi = $stmt2->fetch(PDO::FETCH_ASSOC)['total_transaksi'] ?? 0;

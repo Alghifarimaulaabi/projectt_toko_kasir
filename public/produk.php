@@ -40,7 +40,7 @@ if (!isset($_SESSION['email'])) {
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Foto</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Barang</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Produk</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harga Modal</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harga Jual</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">QTY</th>
@@ -77,7 +77,6 @@ if (!isset($_SESSION['email'])) {
                 <select name="kategori" id="kategori" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
                     <option value="">Pilih Kategori</option>
                     <option value="Elektronik">Elektronik</option>
-                    <option value="Pakaian">Pakaian</option>
                     <option value="Makanan">Makanan</option>
                     <option value="Minuman">Minuman</option>
                     <option value="Lainnya">Lainnya</option>
@@ -85,12 +84,12 @@ if (!isset($_SESSION['email'])) {
             </div>
             
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2">Nama Barang <span class="text-red-500">*</span></label>
+                <label class="block text-gray-700 text-sm font-bold mb-2">Nama Produk <span class="text-red-500">*</span></label>
                 <input type="text" name="nama_barang" id="nama_barang" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" required>
             </div>
             
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2">Foto Barang</label>
+                <label class="block text-gray-700 text-sm font-bold mb-2">Foto Produk</label>
                 <!-- PERBAIKAN: Tambahkan onchange untuk preview dan stopPropagation --> 
                 <input type="file" name="foto" id="foto" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" accept="image/*" onchange="previewFoto(this)">
                 <p class="text-xs text-gray-500 mt-1" required>Format: JPG, PNG, JPEG (Max 2MB)</p>
